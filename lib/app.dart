@@ -8,6 +8,34 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  int _quantidadeDePessoas = 0;
+  String _textoDeInformacao = "Pode Entrar";
+
+  void adicionarPessoa() {
+    setState(() {
+      _quantidadeDePessoas++;
+      verificaQuantidadeDePessoas();
+    });
+  }
+
+  void diminuirPessoa() {
+    setState(() {
+      _quantidadeDePessoas--;
+      verificaQuantidadeDePessoas();
+    });
+  }
+
+  void verificaQuantidadeDePessoas() {
+    setState(() {
+      if (_quantidadeDePessoas < 0)
+        _textoDeInformacao = "Mundo invertido?";
+      else if (_quantidadeDePessoas > 10)
+        _textoDeInformacao = "Lotado!";
+      else
+        _textoDeInformacao = "Pode Entrar";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +51,7 @@ class _AppState extends State<App> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Pessoas: 0',
+                'Pessoas: $_quantidadeDePessoas',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -36,7 +64,7 @@ class _AppState extends State<App> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: adicionarPessoa,
                       child: Text(
                         '+1',
                         style: TextStyle(
@@ -49,7 +77,7 @@ class _AppState extends State<App> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: diminuirPessoa,
                       child: Text(
                         '-1',
                         style: TextStyle(
@@ -62,7 +90,7 @@ class _AppState extends State<App> {
                 ],
               ),
               Text(
-                'Pode Entrar',
+                '$_textoDeInformacao',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30.0,
