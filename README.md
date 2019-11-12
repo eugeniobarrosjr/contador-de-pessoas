@@ -1,5 +1,3 @@
-# contador-de-pessoas
-:mortar_board: Contador de Pessoas
 # Contador de Pessoas
 
 Projeto simples em Flutter.
