@@ -9,4 +9,4 @@ Projeto simples em Flutter.
 Fique a vontade! :smiley:
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](/LICENSE)
